@@ -1,16 +1,51 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import BgImage from "../assets/images/gtavi_wallpaper.webp";
+import Characters from "../assets/images/characters.webp";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <main>
+    <section class="hero">
+      <div class="hero-img-container">
+        <Image src={BgImage} alt="GTA VI hero image" width={3440} height={1200} quality={100}/>
+        <div class="hero-img-logo">
+          <img src="/images/logo.svg" alt="Logo" class="logo"/>
+        </div>
+        <Image src={Characters} alt="Jason and Lucia" width={3440} height={1200} quality={100}/>
+        <div class="hero-img-copy">
+          <p>Scroll down to reveal</p>
+          <img src="/images/chevron.svg" alt="arrow down" class="chevron"/>
+        </div>
+      </div>
+
+      <div class="fade-overlay"></div>
+
+      <div class="overlay">
+        <svg width="100%" height="100%">
+          <defs>
+            <mask id="logoRevealMask">
+              <rect width="100%" height="100%" fill="white" />
+              <path id="logoMask"></path>
+            </mask>
+          </defs>
+          <rect width="100%" height="100%" fill="#111117" mask="url(#logoRevealMask)" />
+        </svg>
+      </div>
+
+      <div class="logo-container"></div>
+
+      <div class="overlay-copy">
+        <h1>
+          <a href="https://dcano.dev" target="_blank" rel="noopener noreferrer">Danimexivasco</a> presents <br>
+          Animation <br>
+          GSAP & LENIS
+        </h1>
+      </div>
+    </section>
+    <section class="outro">
+      <p>This are the main characters. Jason and Lucia</p>
+    </section>
+  </main>
+</Layout>
